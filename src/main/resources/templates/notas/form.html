@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="${nota.id} != null ? 'Editar Notas' : 'Nueva Nota'">Notas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{font-family:system-ui,sans-serif;margin:2rem}
+    form{max-width:520px;border:1px solid #ddd;border-radius:12px;padding:1rem}
+    .row{margin-bottom:.8rem}
+    label{display:block;margin-bottom:.3rem}
+    input{width:100%;padding:.5rem;border:1px solid #ccc;border-radius:.4rem}
+    .error{color:#b00020;font-size:.9rem}
+    .actions{display:flex;gap:.6rem;flex-wrap:wrap}
+    button,a{padding:.5rem .8rem;border:1px solid #333;border-radius:.5rem;text-decoration:none;background:#fff}
+  </style>
+</head>
+<body>
+  <h1 th:text="${nota.id} != null ? 'Editar Notas' : 'Nueva nota'">Nota</h1>
+
+  <!-- acción: si hay id => actualizar, si no => crear -->
+  <form th:action="${nota.id} != null ? @{/notas/{id}/actualizar(id=${nota.id})} : @{/notas}"
+        th:object="${nota}" method="post">
+    <div class="row">
+      <label for="titulo">Titulo</label>
+      <input id="titulo" type="text" th:field="*{titulo}" placeholder="Ej: Lista supermercado" />
+      <div class="error" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
+    </div>
+
+    <div class="row">
+      <label for="contenido">Contenido</label>
+      <input id="contenido" type="text" th:field="*{contenido}" placeholder="1 kg azucar,2 tomates,etc" />
+      <div class="error" th:if="${#fields.hasErrors('contenido')}" th:errors="*{contenido}"></div>
+    </div>
+<div class="row">
+      <label for="autor">Autor</label>
+      <input id="autor" type="text" th:field="*{autor}" placeholder="Roberto Carlos" />
+      <div class="error" th:if="${#fields.hasErrors('autor')}" th:errors="*{autor}"></div>
+    </div>
+
+<div class="row">
+  <label for="importancia">Importancia</label>
+  <select id="importancia" th:field="*{importancia}">
+    <option value="" disabled>Seleccione el nivel de importancia</option>
+    <option th:each="imp : ${importancias}"
+            th:value="${imp}"
+            th:text="${imp}"
+            th:selected="${imp} == *{importancia}">
+    </option>
+  </select>
+  <div class="error" th:if="${#fields.hasErrors('importancia')}" th:errors="*{importancia}"></div>
+</div>
+    <div class="actions">
+      <button type="submit" th:text="${nota.id} != null ? 'Actualizar' : 'Guardar'">Guardar</button>
+      <a th:href="@{/notas}">Cancelar</a>
+    </div>
+
+  </form>
+</body>
+</html>

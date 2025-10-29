@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Notas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 2rem;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      a.btn {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid #333;
+        border-radius: 0.5rem;
+        text-decoration: none;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        padding: 0.6rem;
+        border: 1px solid #ddd;
+      }
+      .msg {
+        background: #eef6ff;
+        border: 1px solid #b6d4fe;
+        padding: 0.6rem;
+        border-radius: 0.5rem;
+        margin: 0 0 1rem 0;
+      }
+      form.inline {
+        display: inline;
+      }
+      button.linklike {
+        background: none;
+        border: 1px solid #333;
+        border-radius: 0.5rem;
+        padding: 0.4rem 0.6rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <h1>Notas</h1>
+      <a class="btn" th:href="@{/notas/nuevo}">Nueva Nota</a>
+    </div>
+
+    <div class="msg" th:if="${msg}" th:text="${msg}"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titulo</th>
+          <th>Contenido</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="p : ${nota}">
+          <td th:text="${n.id}">1</td>
+          <td th:text="${n.titulo}">"Lista de supermercado"</td>
+          <td th:text="${.contenido}">1kg de azucar,2 tomates...</td>
+          <td th:text="${n.autor}">Roberto Carlos</td>
+          <td th:text="${n.importancia}">ALTA</td>
+          <td>
+            <a class="btn" th:href="@{/notas/{id}/editar(id=${p.id})}">Editar</a>
+
+            <form
+              class="inline"
+              th:action="@{/notas/{id}/eliminar(id=${n.id})}"
+              method="post"
+              onsubmit="return confirm('¿Esta seguro que desea eliminar esta Nota?');"
+            >
+              <button type="submit" class="linklike">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+
+        <tr th:if="${#lists.isEmpty(nota)}">
+          <td colspan="4">No ha ingresado ninguna nota.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><a th:href="@{/}">Volver al inicio</a></p>
+  </body>
+</html>

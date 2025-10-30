@@ -63,18 +63,22 @@
           <th>ID</th>
           <th>Titulo</th>
           <th>Contenido</th>
+          <th>Autor</th>
+          <th>Importancia</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="p : ${nota}">
+        <tr th:each="n : ${notas}">
           <td th:text="${n.id}">1</td>
           <td th:text="${n.titulo}">"Lista de supermercado"</td>
-          <td th:text="${.contenido}">1kg de azucar,2 tomates...</td>
+          <td th:text="${n.contenido}">1kg de azucar,2 tomates...</td>
           <td th:text="${n.autor}">Roberto Carlos</td>
           <td th:text="${n.importancia}">ALTA</td>
           <td>
-            <a class="btn" th:href="@{/notas/{id}/editar(id=${p.id})}">Editar</a>
+            <a class="btn" th:href="@{/notas/{id}/editar(id=${n.id})}"
+              >Editar</a
+            >
 
             <form
               class="inline"

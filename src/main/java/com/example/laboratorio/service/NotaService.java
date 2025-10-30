@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.example.laboratorio.model.Nota;
 
 public interface NotaService {
+    
 
     List<Nota> listarTodas();
     Nota crear(Nota nota);

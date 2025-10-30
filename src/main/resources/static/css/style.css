@@ -1,0 +1,123 @@
+
+ 
+    body {
+      font-family: "Segoe UI", Roboto, system-ui, sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+      display: flex;
+      justify-content: center;
+    }
+
+ 
+    form {
+      background: #ffffff;
+      max-width: 600px;
+      width: 100%;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e293b;
+      margin-bottom: 1.5rem;
+    }
+
+
+    .row {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background-color: #f9fafb;
+      transition: all 0.2s ease-in-out;
+    }
+
+    input:focus, select:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      outline: none;
+      background-color: #fff;
+    }
+
+
+    .error {
+      color: #dc2626;
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
+
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out, transform 0.1s;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    a {
+      background-color: #f1f5f9;
+      color: #475569;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      font-weight: 600;
+      transition: background-color 0.2s ease-in-out, color 0.2s;
+    }
+
+    a:hover {
+      background-color: #e2e8f0;
+      color: #1e293b;
+    }
+
+    select {
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23667" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 1rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      form {
+        padding: 1.2rem;
+      }
+    }
